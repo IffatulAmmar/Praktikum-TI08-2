@@ -97,12 +97,13 @@
 
         // totalisasi harga
         $total_belanja = $jumlah * $harga;
+        $total_belanja_formatted = number_format ($total_belanja);
 
         // cetak data formulir
         echo "Nama Customer : $customer";
         echo "<br> Product Pilihan : $product";
         echo "<br> Jumlah Beli : $jumlah";
-        echo "<br> Total Belanja : Rp.$total_belanja,-";
+        echo "<br> Total Belanja : Rp.$total_belanja_formatted,-";
 
         ?>
         
