@@ -65,7 +65,7 @@
 
 <?php
 // mulai sesi
-session_start()
+session_start();
 // cek terlebih dahulu apakah user sudah submit form login atau belum?
 // menggunakan method isset
 if (isset($_POST['submit'])){
