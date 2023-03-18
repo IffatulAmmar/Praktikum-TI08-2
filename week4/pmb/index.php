@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -25,7 +28,7 @@
 					<div class="login-wrap p-0">
                         
 		      	<h3 class="mb-4 text-center">Have an account?</h3>
-		      	<form action="index.php" class="signin-form" method="POST">
+		      	<form action="login.php" class="signin-form" method="POST">
 		      		<div class="form-group">
 		      			<input type="text" name="username" class="form-control" placeholder="Username" required>
 		      		</div>
@@ -63,33 +66,14 @@
 	</body>
 </html>
 
-<?php
-// mulai sesi
-session_start();
+ <?php
+
 // cek terlebih dahulu apakah user sudah submit form login atau belum?
 // menggunakan method isset
-if (isset($_POST['submit'])){
-
-// ambil data yang diinputkan user bedasarkan uniq name
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-// validasi username dan password nya
-// if else, jika username dan password sama, arahkan ke file home.php
-
-    if ($username == 'ammar' && $password == '12345'){
-        $_SESSION['username'] = $username;
-        header("location: home.php");
-        exit();
-    }
-
-// jika username dan password beda, tampilkan error username salah dan tetap di halaman index.php
-    else{
-        echo '<script>';
-		echo 'alert("Username atau Password Salah")';
-		echo '</script>'; 
-    }
-
+if (isset($_SESSION['gagal'])) {
+	echo '<script>';
+	echo 'alert("Username atau Password Salah")';
+	echo '</script>'; 
 }
-?>
+?> 
 

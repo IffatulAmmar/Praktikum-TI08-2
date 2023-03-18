@@ -1,6 +1,5 @@
-<a href="index.php" class="nav-link">
-    <i class="nav-icon fas fa-sign-out-alt"></i>
-    <p>
-    Logout
-    </p>
-</a>
+<?php
+session_start();
+session_destroy();
+header('location:index.php');
+?>
