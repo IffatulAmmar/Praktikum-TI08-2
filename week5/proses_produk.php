@@ -25,7 +25,7 @@ require_once 'dbkoneksi.php';
     $sql = "INSERT INTO produk (kode,nama,harga_beli,harga_jual,stok,
     min_stok,jenis_produk_id) VALUES (?,?,?,?,?,?,?)";
    }else if($_proses == "Update"){
-    $ar_data[]=$_POST['idedit'];// ? 8
+    $ar_data[]=$_GET['idedit'];// ? 8
     $sql = "UPDATE produk SET kode=?,nama=?,harga_beli=?,harga_jual=?,
     stok=?,min_stok=?,jenis_produk_id=? WHERE id=?";
    }

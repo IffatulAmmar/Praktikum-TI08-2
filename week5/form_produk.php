@@ -1,8 +1,23 @@
 <?php 
 require_once 'dbkoneksi.php';
+
+if (isset ($_GET['idedit'])){
+  $_id = $_GET['idedit'];
+
+  $sql = "SELECT * FROM produk WHERE id=?";
+  $st = $dbh->prepare($sql);
+  $st->execute([$_id]);
+  $row = $st->fetch();
+}
+
+
 ?>
-            
+
+<?php if (isset ($_GET['idedit'])) :?>
+<form method="POST" action="proses_produk.php?idedit=<?= $_GET['idedit']?>">
+<?php else : ?>
 <form method="POST" action="proses_produk.php">
+<?php endif ?>
   <div class="form-group row">
     <label for="kode" class="col-4 col-form-label">Kode</label> 
     <div class="col-8">
@@ -13,7 +28,7 @@ require_once 'dbkoneksi.php';
           </div>
         </div> 
         <input id="kode" name="kode" type="text" class="form-control"
-        value="">
+        value="<?= isset($row['kode']) ? $row['kode'] : '' ?>">
       </div>
     </div>
   </div>
@@ -27,7 +42,7 @@ require_once 'dbkoneksi.php';
           </div>
         </div> 
         <input id="nama" name="nama" type="text" class="form-control" 
-        value="">
+        value="<?= isset($row['nama']) ? $row['nama'] : '' ?>">
       </div>
     </div>
   </div>
@@ -41,7 +56,7 @@ require_once 'dbkoneksi.php';
           </div>
         </div> 
         <input id="harga_beli" name="harga_beli" 
-        value="" type="text" class="form-control">
+        value="<?= isset($row['harga_beli']) ? $row['harga_beli'] : '' ?>" type="text" class="form-control">
       </div>
     </div>
   </div>
@@ -54,7 +69,7 @@ require_once 'dbkoneksi.php';
             <i class="fa fa-arrow-circle-up"></i>
           </div>
         </div> 
-        <input id="stok" name="stok" value=""
+        <input id="stok" name="stok" value="<?= isset($row['stok']) ? $row['stok'] : '' ?>"
         type="text" class="form-control">
       </div>
     </div>
@@ -69,7 +84,7 @@ require_once 'dbkoneksi.php';
           </div>
         </div> 
         <input id="min_stok" name="min_stok" 
-        value=""
+        value="<?= isset($row['min_stok']) ? $row['min_stok'] : '' ?>"
         type="text" class="form-control">
       </div>
     </div>
@@ -82,13 +97,16 @@ require_once 'dbkoneksi.php';
             $rsjenis = $dbh->query($sqljenis);
         ?>
       <select id="jenis" name="jenis" class="custom-select">
-          <?php 
-            foreach($rsjenis as $rowjenis){
-         ?>
+        <?php if (isset($_GET['idedit'])) : ?>
+          <?php foreach($rsjenis as $rowjenis) : ?>
+          <option value="<?=$rowjenis['id']?>"<?php echo $rowjenis['id'] == $row['jenis_produk_id'] ? "selected" : "" ?>><?=$rowjenis['nama']?></option>
+          <?php endforeach ?>
+
+        <?php else : ?>
+          <?php foreach($rsjenis as $rowjenis): ?>
             <option value="<?=$rowjenis['id']?>"><?=$rowjenis['nama']?></option>
-         <?php
-            }
-        ?>
+            <?php endforeach ?>
+        <?php endif ?>
         <!--
         <option value="1">Elektronik</option>
         <option value="2">Furniture</option>
@@ -99,8 +117,12 @@ require_once 'dbkoneksi.php';
   </div> 
   <div class="form-group row">
     <div class="offset-4 col-8">
-      <input type="submit" name="proses" type="submit" 
-      class="btn btn-primary" value="Simpan"/>
+      <?php
+      if (isset ($_GET['idedit'])){ ?>
+        <input type="submit" name="proses" type="submit" class="btn btn-primary" value="Update"/>
+      <?php } else { ?>
+        <input type="submit" name="proses" type="submit" class="btn btn-primary" value="Simpan"/>
+      <?php } ?>
     </div>
   </div>
 </form>
