@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?php 
   $host = 'localhost';
   $db = 'dbkoperasi';
@@ -15,4 +16,23 @@
 
   $dbh =  new PDO($dsn,$user,$pass,$opt);
 
+=======
+<?php 
+  $host = 'localhost';
+  $db = 'dbkoperasi';
+  $user = 'root';
+  $pass = '';
+  $charset='utf8mb4';
+
+  $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
+
+  $opt = [
+    PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES=>false,
+  ];
+
+  $dbh =  new PDO($dsn,$user,$pass,$opt);
+
+>>>>>>> 1175c45de0bc81556f2c66acb0309a453e4046b9
 ?>
