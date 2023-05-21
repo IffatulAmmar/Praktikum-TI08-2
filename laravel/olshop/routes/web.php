@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InputController;
+use App\Http\Controllers\PraktikumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,3 +39,9 @@ Route::get('/nf', function (){
 Route::get('/praktikum', function (){
     return view('praktikum');
 });
+
+Route::get('/input', [InputController::class, 'index']);
+Route::post('/output', [InputController::class, 'output']);
+
+Route::get('/praktikum1', [PraktikumController::class, 'index']);
+Route::post('/praktikum1', [PraktikumController::class, 'output']);
