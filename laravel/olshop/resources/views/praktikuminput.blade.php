@@ -27,7 +27,7 @@ $ar_skill = array('PHP' => 'PHP',
   <body>
     <div class="container">
         <h1>Form HTML pada PHP</h1>
-        <form action="{{ url('praktikum1') }}" method="POST">
+        <form action="{{ url('praktikuminput') }}" method="POST">
             {{ csrf_field() }}
             <div class="form-group row">
               <label for="nama" class="col-4 col-form-label">Nama</label>

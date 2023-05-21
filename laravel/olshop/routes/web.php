@@ -43,5 +43,5 @@ Route::get('/praktikum', function (){
 Route::get('/input', [InputController::class, 'index']);
 Route::post('/output', [InputController::class, 'output']);
 
-Route::get('/praktikum1', [PraktikumController::class, 'index']);
-Route::post('/praktikum1', [PraktikumController::class, 'output']);
+Route::get('/praktikuminput', [PraktikumController::class, 'index']);
+Route::post('/praktikuminput', [PraktikumController::class, 'output']);
