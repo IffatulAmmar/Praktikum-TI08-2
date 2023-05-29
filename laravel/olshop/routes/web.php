@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InputController;
 use App\Http\Controllers\PraktikumController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,3 +48,18 @@ Route::post('/output', [InputController::class, 'output']);
 
 Route::get('/praktikuminput', [PraktikumController::class, 'index']);
 Route::post('/praktikuminput', [PraktikumController::class, 'output']);
+
+// ini route tampilan admin
+route::prefix('admin')->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/produk', [ProdukController::class, 'index']);
+});
+
+
+// route untuk tampilan frontend
+route::prefix('frontend')->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index_user']);
+    Route::get('/about', [AboutController::class, 'index']);
+});
+
+
