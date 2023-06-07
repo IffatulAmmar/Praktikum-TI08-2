@@ -6,6 +6,8 @@ use App\Http\Controllers\PraktikumController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\PesananController;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,8 @@ Route::post('/praktikuminput', [PraktikumController::class, 'output']);
 route::prefix('admin')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/produk', [ProdukController::class, 'index']);
+    Route::get('/kategori', [KategoriController::class, 'index']);
+    Route::get('/pesanan', [PesananController::class, 'index']);
 });
 
 
