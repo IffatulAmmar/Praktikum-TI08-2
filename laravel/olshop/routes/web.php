@@ -54,9 +54,28 @@ Route::post('/praktikuminput', [PraktikumController::class, 'output']);
 // ini route tampilan admin
 route::prefix('admin')->group(function(){
     Route::get('/dashboard', [DashboardController::class, 'index']);
+
     Route::get('/produk', [ProdukController::class, 'index']);
+    Route::get('/produk/create', [ProdukController::class, 'create']);
+    Route::post('/produk/store', [ProdukController::class, 'store']);
+    Route::get('/produk/edit/{id}', [ProdukController::class, 'edit']);
+    Route::post('/produk/update/{id}', [ProdukController::class, 'update']);
+    Route::get('/produk/delete/{id}', [ProdukController::class, 'destroy']);
+
     Route::get('/kategori', [KategoriController::class, 'index']);
+    Route::get('/kategori/create', [KategoriController::class, 'create']);
+    Route::post('/kategori/store', [KategoriController::class, 'store']);
+    Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit']);
+    Route::post('/kategori/update/{id}', [KategoriController::class, 'update']);
+    Route::get('/kategori/delete/{id}', [KategoriController::class, 'destroy']);
+
     Route::get('/pesanan', [PesananController::class, 'index']);
+    Route::get('/pesanan/create', [PesananController::class, 'create']);
+    Route::post('/pesanan/store', [PesananController::class, 'store']);
+    Route::get('/pesanan/edit/{id}', [PesananController::class, 'edit']);
+    Route::post('/pesanan/update/{id}', [PesananController::class,'update']);
+    Route::get('/pesanan/delete/{id}', [PesananController::class,'destroy']);
+
 });
 
 

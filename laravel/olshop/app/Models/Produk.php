@@ -12,6 +12,8 @@ class Produk extends Model
 
     protected $table = 'produk';
 
+    public $timestamps = false;
+
     protected $primary = 'id';
 
     protected $fillable = [
