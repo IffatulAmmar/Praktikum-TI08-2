@@ -13,4 +13,8 @@ class DashboardController extends Controller
     public function index_user(){
         return view('user.dashboard');
     }
+    public function logout(){
+        $this->middleware('guest')->except('logout');
+        return view('home');
+    }
 }
